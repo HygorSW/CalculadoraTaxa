@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Valores</title>
+    <script>
+        function calcularJuros() {
+            const valorSelect = document.getElementById("valorSelect");
+            const valorInput = document.getElementById("valorInput");
+            const parcelasSelect = document.getElementById("parcelasSelect");
+            const resultadoDiv = document.getElementById("resultado");
+
+            // Obter valor personalizado ou o valor selecionado
+            let valor = parseFloat(valorInput.value);
+            if (isNaN(valor) || valor <= 0) {
+                valor = parseFloat(valorSelect.value);
+            }
+
+            const parcelas = parseInt(parcelasSelect.value);
+
+            // Taxa de juros fixa (pode ser ajustada)
+            const taxaJuros = 0.05; // 5% por parcela
+
+            // Calcular o valor final com juros
+            const valorFinal = valor * Math.pow(1 + taxaJuros, parcelas);
+
+            // Calcular o valor de cada parcela
+            const valorParcela = valorFinal / parcelas;
+
+            // Exibir o resultado
+            resultadoDiv.innerHTML = `
+               <div class="info">
+                <p>Valor original: R$${valor.toFixed(2)}</p>
+                <p>Número de parcelas: ${parcelas}x</p>
+                <p>Valor final com juros: R$${valorFinal.toFixed(2)}</p>
+                <p>Valor de cada parcela: R$${valorParcela.toFixed(2)}</p>
+               </div>
+
+            `;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="top">
+            <H1>Calculadora de juros</H1>
+        </div>
+        <div class="mid">
+
+           
+                <label for="valorSelect">Selecione um valor:</label>
+                <div class="inputValorDefinido">
+                    <div class="simboloValor"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAABYElEQVR4nO2VsStFURzHP6JISonQW8hoowwy+BcMrwwoIwYZLNgpPYNBKWzYFWUhb1FYpF5ZWKSQlN57iZ6rW1/uz+3e7hlE5Fu/un2+53e+3XPOPRf+9Y3ygP0fDfAiKg+cAJNAZURPOTABHJnxK0DKNcAzdQBUhHo2jP9knq+ApriAAcNSQMZ4Q8brEnsF+oEyoB24Fs+4BKDGnLw1Ao2KnfNZU+KnrgG+duStE2hE7A6owkFxAbXArbwZw1uAovg20OYasAikVWPAmfg90BzqGQae5ZeALaA3KSCqckBnTF+HJi6Z8asRJ+7D3AOWVUWx8aTXB1qBJZ2q8HLG7sGC2A1Qg5vmzLeQGNAIFMSnQ+MfxQdDvE+84BLga178Aagj0K74IVBtro5Ncf+KcQpo0B3je7OG9wAvZgn9wEszT9o1wK5rXsv2rm7g2GysXxe6Or5U9Zo8y2/+4fxRvQFKQJWqAyWV2gAAAABJRU5ErkJggg==" alt="real"></div>
+                <select name="valor" id="valorSelect">
+                    <option value="100">100</option>
+                    <option value="500">500</option>
+                    <option value="1000">1.000</option>
+                    <option value="2000">2.000</option>
+                    <option value="5000">5.000</option>
+                    <option value="10000">10.000</option>
+
+                </select>
+            </div>
+
+                <label for="valorInput">Ou insira um valor específico (em R$):</label>
+                <div class="inputValorDefinido">
+                    <div class="simboloValor">               
+                <input type="number" id="valorInput" placeholder="Ex.: 150" step="0.01" min="0">
+            </div>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAABYElEQVR4nO2VsStFURzHP6JISonQW8hoowwy+BcMrwwoIwYZLNgpPYNBKWzYFWUhb1FYpF5ZWKSQlN57iZ6rW1/uz+3e7hlE5Fu/un2+53e+3XPOPRf+9Y3ygP0fDfAiKg+cAJNAZURPOTABHJnxK0DKNcAzdQBUhHo2jP9knq+ApriAAcNSQMZ4Q8brEnsF+oEyoB24Fs+4BKDGnLw1Ao2KnfNZU+KnrgG+duStE2hE7A6owkFxAbXArbwZw1uAovg20OYasAikVWPAmfg90BzqGQae5ZeALaA3KSCqckBnTF+HJi6Z8asRJ+7D3AOWVUWx8aTXB1qBJZ2q8HLG7sGC2A1Qg5vmzLeQGNAIFMSnQ+MfxQdDvE+84BLga178Aagj0K74IVBtro5Ncf+KcQpo0B3je7OG9wAvZgn9wEszT9o1wK5rXsv2rm7g2GysXxe6Or5U9Zo8y2/+4fxRvQFKQJWqAyWV2gAAAABJRU5ErkJggg==" alt="real"></div>
+
+            <div class="rowvezes">
+            <select name="parcelas" id="parcelasSelect">
+                <option value="1">1x</option>
+                <option value="2">2x</option>
+                <option value="3">3x</option>
+                <option value="4">4x</option>
+                <option value="5">5x</option>
+                <option value="6">6x</option>
+                <option value="7">7x</option>
+                <option value="8">8x</option>
+                <option value="9">9x</option>
+                <option value="10">10x</option>
+                <option value="11">11x</option>
+                <option value="12">12x</option>
+            </select>
+        </div>
+
+            <button onclick="calcularJuros()" id="btnCalcular">Calcular</button>
+        </div>
+        <div id="resultado" style="margin-top: 20px; font-size: 16px;"></div>
+
+    </div>
+    <div class="fotter">
+        <p>Alguma duvida? Entre em contato pelo <a href="https://wa.me/5511980346039?text=vim%20pelo%20site%2C%20tenho%20uma%20duvida!">WhatsApp</a> </p>
+    </div>
+</body>
+
+</html>
