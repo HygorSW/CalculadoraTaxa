@@ -136,7 +136,7 @@ body {
 @media (max-height: 750px) {
     .main {
         width: 95%; /* Ajusta a largura para 95% da tela */
-        height: 90%; /* Permite que o conteúdo ajuste a altura automaticamente */
+        height: 80%; /* Permite que o conteúdo ajuste a altura automaticamente */
         padding: 20px; /* Reduz o padding para economizar espaço */
     }
 
@@ -159,7 +159,6 @@ body {
 
     #valorSelect,
     #valorInput,
-    #parcelasSelect,
     #btnCalcular {
         width: 100%; /* Usa a largura total disponível */
         font-size: 16px; /* Reduz o tamanho da fonte */
